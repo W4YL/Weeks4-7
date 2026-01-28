@@ -13,13 +13,13 @@ public class SpinButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void setRotation(float speed)
-    {
         Vector3 newRotation = transform.eulerAngles;
         newRotation.z += speed * Time.deltaTime;
         transform.eulerAngles = newRotation;
+    }
+
+    public void setRotation(float rs)
+    {
+        speed = rs;
     }
 }
