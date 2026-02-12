@@ -26,12 +26,14 @@ public class CarSpawner : MonoBehaviour
 
         if (spawnTimer <= 0)
         {
-            spawnedCars.GetComponent<CarObject>().frogTr = frog.transform;
             Vector2 spawnPos = transform.position;
             spawnTimer = timerTime;
-            Instantiate(spawnedCars, spawnPos, Quaternion.identity);
 
-            cars.Add(spawnedCars);
+            float randomY = Random.Range(4f, -1f);
+            transform.position = new Vector2(transform.position.x, randomY);
+
+            spawnedCars.GetComponent<CarObject>().frogTr = frog.transform;
+            Instantiate(spawnedCars, spawnPos, Quaternion.identity);
         }
 
     }

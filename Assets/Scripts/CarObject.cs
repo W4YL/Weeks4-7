@@ -22,7 +22,7 @@ public class CarObject : MonoBehaviour
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPos.x < -80)                         
         {
-            //newPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width + 80, screenPos.y));
+            Destroy(gameObject);
         }
 
         transform.position = newPos;
