@@ -9,6 +9,7 @@ public class CarObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class CarObject : MonoBehaviour
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPos.x < -80)                         
         {
-            newPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width + 80, screenPos.y));
+            //newPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width + 80, screenPos.y));
         }
 
         transform.position = newPos;
