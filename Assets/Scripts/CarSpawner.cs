@@ -6,6 +6,7 @@ public class CarSpawner : MonoBehaviour
 {
     public GameObject spawnedCars;
     public GameObject frog;
+    public GameObject explode;
     public float spawnTimer = 3;
     public float timerTime = 3;
 
@@ -33,6 +34,7 @@ public class CarSpawner : MonoBehaviour
             transform.position = new Vector2(transform.position.x, randomY);
 
             spawnedCars.GetComponent<CarObject>().frogTr = frog.transform;
+            spawnedCars.GetComponent<CarObject>().explosion = explode;
             Instantiate(spawnedCars, spawnPos, Quaternion.identity);
         }
 

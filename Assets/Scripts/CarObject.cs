@@ -6,6 +6,10 @@ public class CarObject : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Transform frogTr;
 
+    public GameObject explosion;
+    private float timer = 1;
+    public float timerTime = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +34,11 @@ public class CarObject : MonoBehaviour
         if (spriteRenderer.bounds.Contains(frogTr.position))
         {
             Debug.Log("Conditional achieved");
+
+            Vector2 deathPosition = frogTr.position;
+
+            Instantiate(explosion, deathPosition, Quaternion.identity);
+
             Vector2 newFrogPos = frogTr.position;
             newFrogPos = new Vector2(0, -4);
             frogTr.position = newFrogPos;
