@@ -7,7 +7,6 @@ public class CarObject : MonoBehaviour
     public Transform frogTr;
 
     public GameObject explosion;
-    private float timer = 1;
     public float timerTime = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
