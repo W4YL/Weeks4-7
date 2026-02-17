@@ -8,6 +8,7 @@ public class TileSpawner : MonoBehaviour
     public GameObject tilePrefab;
     private GameObject spawnedTiles;
     public TileBehaviour tileScript;
+    public TileSpeedManager speedScript;
 
     private float spawnTimer;
     public float timerTime;
@@ -41,12 +42,14 @@ public class TileSpawner : MonoBehaviour
         for (int i = tiles.Count - 1; i >= 0; i--)
         {
             TileBehaviour tile = tiles[i].GetComponent<TileBehaviour>();
+            tile.speed = speedScript.tileSpeed;
 
             if (tile.isOffScreen)
             {
                 Destroy(tiles[i]);
                 tiles.Remove(tile.gameObject);
 
+                timerTime = Random.Range(0.1f, 2f);
                 spawnTimer = timerTime;
                 spawned = false;
             }
