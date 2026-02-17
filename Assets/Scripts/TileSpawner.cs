@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,9 @@ public class TileSpawner : MonoBehaviour
     private float spawnTimer;
     public float timerTime;
     public bool spawned = false;
+
+    public float hitboxY = -3f;
+    public float hitboxHeight = 5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,7 +40,7 @@ public class TileSpawner : MonoBehaviour
             tiles.Add(spawnedTiles);
             spawnTimer = timerTime;
 
-            Debug.Log("Timer trigger");
+            //Debug.Log("Timer trigger");
         }
 
         for (int i = tiles.Count - 1; i >= 0; i--)
@@ -47,9 +51,47 @@ public class TileSpawner : MonoBehaviour
             if (tile.isOffScreen)
             {
                 Destroy(tiles[i]);
-                tiles.Remove(tile.gameObject);
+                tiles.RemoveAt(i);
 
-                timerTime = Random.Range(0.1f, 10f/speedScript.tileSpeed);
+                timerTime = Random.Range(2 / speedScript.tileSpeed, 10 / speedScript.tileSpeed);
+                spawnTimer = timerTime;
+                spawned = false;
+            }
+        }
+
+        //for (int i = tiles.Count - 1; i >= 0; i--)
+        //{
+        //    float tileY = tiles[i].transform.position.y;
+
+        //    if (Mathf.Abs(tileY - hitboxY) <= hitboxHeight)
+        //    {
+        //        Debug.Log("In range");
+        //    }
+
+        //    if (tileY < hitboxY)
+        //    {
+        //        Debug.Log("Below hitbox");
+        //    }
+        //    Debug.Log(tileY);
+        //}
+
+        
+    }
+
+    public void HitFunction()
+    {
+        for (int i = tiles.Count - 1; i >= 0; i--)
+        {
+            float tileY = tiles[i].transform.position.y;
+            //Debug.Log(tileY);
+
+            if (Mathf.Abs(tileY - hitboxY) <= hitboxHeight)
+            {
+                //Debug.Log("Hit");
+                Destroy(tiles[i]);
+                tiles.RemoveAt(i);
+
+                timerTime = Random.Range(2 / speedScript.tileSpeed, 10 / speedScript.tileSpeed);
                 spawnTimer = timerTime;
                 spawned = false;
             }
