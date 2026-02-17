@@ -15,4 +15,10 @@ public class TileSpeedManager : MonoBehaviour
     {
         
     }
+
+    public void SpeedChange(float s)
+    {
+        tileSpeed = s;
+        Debug.Log(s);
+    }
 }

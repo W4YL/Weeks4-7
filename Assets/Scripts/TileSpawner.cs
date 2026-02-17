@@ -16,7 +16,7 @@ public class TileSpawner : MonoBehaviour
     public bool spawned = false;
 
     public float hitboxY = -3f;
-    public float hitboxHeight = 5f;
+    public float hitboxHeight = 0.9f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,8 +74,6 @@ public class TileSpawner : MonoBehaviour
         //    }
         //    Debug.Log(tileY);
         //}
-
-        
     }
 
     public void HitFunction()
