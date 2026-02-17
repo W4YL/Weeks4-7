@@ -10,6 +10,7 @@ public class TileSpawner : MonoBehaviour
     private GameObject spawnedTiles;
     public TileBehaviour tileScript;
     public TileSpeedManager speedScript;
+    public ScoreCounter scoreCounter;
 
     private float spawnTimer;
     public float timerTime;
@@ -56,6 +57,8 @@ public class TileSpawner : MonoBehaviour
                 timerTime = Random.Range(2 / speedScript.tileSpeed, 10 / speedScript.tileSpeed);
                 spawnTimer = timerTime;
                 spawned = false;
+
+                scoreCounter.DeductScore();
             }
         }
 
@@ -92,6 +95,12 @@ public class TileSpawner : MonoBehaviour
                 timerTime = Random.Range(2 / speedScript.tileSpeed, 10 / speedScript.tileSpeed);
                 spawnTimer = timerTime;
                 spawned = false;
+
+                scoreCounter.AddScore();
+            }
+            else
+            {
+                scoreCounter.DeductScore();
             }
         }
     }
