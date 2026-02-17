@@ -98,10 +98,6 @@ public class TileSpawner : MonoBehaviour
 
                 scoreCounter.AddScore();
             }
-            else
-            {
-                scoreCounter.DeductScore();
-            }
         }
     }
 }
