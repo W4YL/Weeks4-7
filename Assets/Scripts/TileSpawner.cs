@@ -49,7 +49,7 @@ public class TileSpawner : MonoBehaviour
                 Destroy(tiles[i]);
                 tiles.Remove(tile.gameObject);
 
-                timerTime = Random.Range(0.1f, 2f);
+                timerTime = Random.Range(0.1f, 10f/speedScript.tileSpeed);
                 spawnTimer = timerTime;
                 spawned = false;
             }
