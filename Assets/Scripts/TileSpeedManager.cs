@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TileSpeedManager : MonoBehaviour
 {
+    //Global tile speed for each column
     public float tileSpeed = 5f; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,9 +17,11 @@ public class TileSpeedManager : MonoBehaviour
         
     }
 
+    //Slider reference
     public void SpeedChange(float s)
     {
+        //Set speed to slider value
         tileSpeed = s;
-        Debug.Log(s);
+        //Debug.Log(s);
     }
 }
