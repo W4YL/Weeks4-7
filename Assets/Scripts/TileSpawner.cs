@@ -4,6 +4,7 @@ using System.Buffers.Text;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class TileSpawner : MonoBehaviour
@@ -22,6 +23,9 @@ public class TileSpawner : MonoBehaviour
     private float spawnTimer;
     public float timerTime;
     public bool spawned = false;
+
+    //Timer visualization
+    public Slider timerVisuals;
 
     //Tile hitbox check
     public float hitboxY = -3f;
@@ -46,6 +50,14 @@ public class TileSpawner : MonoBehaviour
         if (!spawned)
         {
             spawnTimer -= Time.deltaTime;
+
+            //Visualize countdown on slider
+            timerVisuals.value = spawnTimer / timerTime;
+        }
+        else
+        {
+            //Zero slider value if inactive
+            timerVisuals.value = 0;
         }
 
         //When countdown hits zero
