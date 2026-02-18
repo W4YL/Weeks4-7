@@ -19,6 +19,11 @@ public class TileSpawner : MonoBehaviour
     public float hitboxY = -3f;
     public float hitboxHeight = 0.9f;
 
+    public SpriteRenderer flashVisual;
+    public SpriteRenderer flashGradient;
+    public float fade = 0;
+    private bool fadeOut = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,6 +67,21 @@ public class TileSpawner : MonoBehaviour
             }
         }
 
+        if (fadeOut)
+        {
+            fade -= Time.deltaTime*3;
+
+            Color col = new Color(1, 1, 1, fade);
+            flashVisual.color = col;
+            Color colG = new Color(1, 1, 1, fade/3);
+            flashGradient.color = colG;
+        }
+        if (fade <= 0)
+        {
+            fadeOut = false;
+            fade = 0;
+        }
+
         //for (int i = tiles.Count - 1; i >= 0; i--)
         //{
         //    float tileY = tiles[i].transform.position.y;
@@ -97,6 +117,8 @@ public class TileSpawner : MonoBehaviour
                 spawned = false;
 
                 scoreCounter.AddScore();
+                fadeOut = true;
+                fade = 1;
             }
         }
     }
